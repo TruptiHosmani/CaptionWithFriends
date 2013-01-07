@@ -1,0 +1,39 @@
+<% if signed_in? %>
+  <div class="row-fluid">
+    <div class="span2">
+
+        <%= render 'shared/user_info' %>
+
+
+      <div class="well sidebar-nav">
+        <ul class="nav nav-pills nav-stacked">
+          <li <% if @current_page == 'my_photos' %>class="active"<%end%>><a href='/'>My Photos </a></li>
+          <li <% if @current_page == 'captions_given' %>class="active"<%end%>><a href='/contests/captions_given'>Caption Given</a></li>
+          <li <% if @current_page == 'captions_pending' %>class="active"<%end%>><a href='/contests/captions_pending'>Caption Pending</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="span8">
+      <%= render partial: 'contests/list', contests: @contests %>
+      <%= link_to "Add New Contest", '/contests/new',
+                                class: "btn btn-info" %>
+    </div>
+
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to the Sample App</h1>
+
+    <h2>
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% end %>

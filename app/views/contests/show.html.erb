@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="span10">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <b>User:</b>
+      <%= @contest.user.name%>
+    </p>
+
+    <p>
+      <b>Title:</b>
+      <%= @contest.title %>
+    </p>
+
+    <p>
+      <b>End date:</b>
+      <%= @contest.end_date %>
+    </p>
+
+     <table class="table table-striped">
+      <tr>
+        <th>Picture</th>
+      </tr>
+
+      <tr>
+        <td><%= image_tag @contest.image_remote_url%></td>
+      </tr>
+    </table>
+    <%= link_to 'Back', contests_path %>
+    <% if current_user == @contest.user %>
+      | <%= link_to 'Edit', edit_contest_path(@contest) %>
+    <% end %>
+  </div>
+
+  <div class="span7">
+        <aside class ="micropost">
+          <%= render partial: 'shared/micropost_form', contest_id: @contest.id %>
+        </aside>
+
+
+        <h2>Captions :</h2>
+        <table class="table table-bordered">
+          <tr>
+            <th>User</th>
+            <th>Text</th>
+            <th>Average Rating</th>
+            <th>Rate This:</th>
+          </tr>
+
+          <% @microposts.each do |micropost| %>
+            <tr>
+              <td><%= micropost.user.name %></td>
+              <td><%= micropost.content %></td>
+              <td><%= micropost.rating_average %></td>
+              <td><% if current_user.id != micropost.user_id %><%= ratings_for micropost, current_user%> <% else %><%= 'You Cannot rate this' %><% end %></td>
+            </tr>
+
+        </table>
+
+      <% end %>
+
+  </div>
+
+</div>

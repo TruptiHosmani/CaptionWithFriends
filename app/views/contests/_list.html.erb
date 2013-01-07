@@ -1,0 +1,17 @@
+  <h2>Contests</h2>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>Title</th>
+      <th>Contest Photo</th>
+      <th> End Date</th>
+    </tr>
+
+  <% @contests.each do |contest| %>
+    <tr>
+      <td><%= link_to(contest.title, contest_path(contest) )  %></td>
+      <td><%= link_to image_tag(contest.image_remote_url), contest_path(contest) %></td>
+      <td><%= contest.end_date %></td>
+    </tr>
+  <% end %>
+  </table>

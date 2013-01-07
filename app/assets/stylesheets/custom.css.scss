@@ -1,0 +1,307 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+$grayLighter : #eaeaea ;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6, a {
+  line-height: 1;
+}
+body a {
+    color: blue;
+
+  }
+  section a {
+    color: blue;
+
+  }
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover { 
+      color: $grayDarker;
+    }
+  }  
+  small { 
+    float: left; 
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.6em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  height: auto;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+#error_explanation {
+  color:#f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
+
+ /* users index */
+
+ .users {
+   list-style: none;
+   margin: 0;
+   li {
+     overflow: auto;
+     padding: 10px 0;
+     border-top: 1px solid $grayLighter;
+     &:last-child {
+       border-bottom: 1px solid $grayLighter;
+     }
+   }
+ }
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+ /*
+ * Style by Rogie http://www.komodomedia.com/blog/2007/01/css-star-rating-redux/
+ */
+
+ .ajaxful-rating,
+ .ajaxful-rating a:hover,
+ .ajaxful-rating a:active,
+ .ajaxful-rating a:focus,
+ .ajaxful-rating.show-value{
+     background: image-url("star.png") left -1000px repeat-x;
+ }
+ .ajaxful-rating{
+     position: relative;
+     /*width: 125px; this is setted dynamically */
+     height: 25px;
+     overflow: hidden;
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     background-position: left top;
+ }
+ .ajaxful-rating li{ display: inline; }
+ .ajaxful-rating a,
+ .ajaxful-rating span,
+ .ajaxful-rating .show-value{
+     position: absolute;
+     top: 0;
+     left: 0;
+     text-indent: -1000em;
+     height: 25px;
+     line-height: 25px;
+     outline: none;
+     overflow: hidden;
+     border: none;
+ }
+ .ajaxful-rating a:hover,
+ .ajaxful-rating a:active,
+ .ajaxful-rating a:focus{
+     background-position: left bottom;
+ }
+
+ /* This section is generated dynamically.
+ Just add a call to the helper method 'ajaxful_rating_style' within
+ the head tags in your main layout
+ .ajaxful-rating .stars-1{
+ width: 20%;
+ z-index: 6;
+ }
+ .ajaxful-rating .stars-2{
+ width: 40%;
+ z-index: 5;
+ }
+ .ajaxful-rating .stars-3{
+ width: 60%;
+ z-index: 4;
+ }
+ .ajaxful-rating .stars-4{
+ width: 80%;
+ z-index: 3;
+ }
+ .ajaxful-rating .stars-5{
+ width: 100%;
+ z-index: 2;
+ }
+ */
+ .ajaxful-rating .show-value{
+     z-index: 1;
+     background-position: left center;
+ }
+
+ /* smaller star */
+ .ajaxful-rating.small{
+     /*width: 50px; this is setted dynamically */
+     height: 10px;
+ }
+ .ajaxful-rating.small,
+ .ajaxful-rating.small a:hover,
+ .ajaxful-rating.small a:active,
+ .ajaxful-rating.small a:focus,
+ .ajaxful-rating.small .show-value{
+     background-image: image-url("star_small.png");
+     line-height: 10px;
+     height: 10px;
+ }

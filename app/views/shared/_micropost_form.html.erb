@@ -1,0 +1,8 @@
+<%= form_for(@micropost) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Add new Caption..." %>
+  </div>
+  <%= f.hidden_field :contest_id, :value => @contest.id %>
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>

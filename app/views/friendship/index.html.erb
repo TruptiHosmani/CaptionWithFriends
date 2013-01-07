@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="span10">
+      <% if @friends %>
+        <h2>Friends</h2>
+        <table class="table table-bordered">
+          <tr>
+            <th>Gravatar</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+
+          <% @friends.each do |friend| %>
+            <tr>
+              <td><%= gravatar_for friend %></td>
+              <td><%= friend.name %></td>
+              <td><a href="/friendship/delete?friend_id=<%= friend.id %>">Delete</a></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+      <% if @request_sent.length != 0 %>
+          <hr>
+          <h2> Pending Requests  </h2>
+          <table class="table table-bordered">
+            <tr>
+              <th>Gravatar</th>
+              <th>Name</th>
+            </tr>
+
+            <% @request_sent.each do |friend| %>
+              <tr>
+                <td><%= gravatar_for friend %></td>
+                <td><%= friend.name %></td>
+              </tr>
+            <% end %>
+          </table>
+          <hr>
+      <% end %>
+      <% if @request_received.length != 0 %>
+        <h2> Request received</h2>
+        <table class="table table-bordered">
+          <tr>
+            <th>Gravatar</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+
+        <% @request_received.each do |friend| %>
+          <tr>
+            <td><%= gravatar_for friend %></td>
+            <td><%= friend.name %></td>
+            <td>&nbsp;<a href="/friendship/approve?friend_id=<%= friend.id %>"> Approve </a>| &nbsp;</td>
+            <td><a href="/friendship/ignore?friend_id=<%= friend.id %>">Ignore </a></td>
+          </tr>
+        <% end %>
+        </table>
+      <% end %>
+  </div>
+ </div>
